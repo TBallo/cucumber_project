@@ -1,33 +1,41 @@
 package stepDefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import pageObjects.HomePage;
 
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-public class SampleSteps {
+public class sampleCommonSteps {
     private WebDriver driver;
+    private HomePage homePage;
 
-    public SampleSteps() {
+    public sampleCommonSteps() {
         this.driver = Hooks.driver;
+        homePage = PageFactory.initElements(driver, HomePage.class);
     }
 
     @Given("^I am on the home page$")
-    public void iAmOnTheHomePage() throws Throwable {
-        driver.get("https://kristinek.github.io/test-sample");
+    public void i_am_on_the_home_page() throws Throwable {
+        driver.get(homePage.getPageUrl());
     }
 
     @Then("^I should see home page header$")
-    public void iShouldSeeHomePageHeader() throws Throwable {
-        assertEquals("This is a home page",
-                driver.findElement(By.cssSelector("h1")).getText());
+    public void i_should_see_home_page_header() throws Throwable {
+        assertEquals("This is a home page", homePage.getPageHeaderText());
+    }
+
+    @And("^I see a description text$")
+    public void iSeeADescriptionText() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+//        throw new PendingException();
     }
 
     @When("^I enter name: \"([^\"]*)\"$")
