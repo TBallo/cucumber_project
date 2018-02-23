@@ -63,4 +63,12 @@ public class SampleSteps {
             driver.findElement(By.id(e.getKey())).sendKeys(e.getValue());
         }
     }
+
+    @And("^I am on the home page description$")
+    public void iAmOnTheHomePageDescription() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
 }
+
+
