@@ -1,4 +1,4 @@
-@regression @part2
+@regression
 Feature: Introduction to cucumber part 2
   As a test engineer
   I want to be able to write and execute a scenario with parameters
@@ -7,6 +7,7 @@ Feature: Introduction to cucumber part 2
     Given I am on age page
     When I enter name: "Ann"
     And I enter age: 5
+    And I change age to 6
     And I click submit age
     Then I see message: "Hello, Ann, you are a kid"
 
@@ -14,6 +15,11 @@ Feature: Introduction to cucumber part 2
     Given I open age page
     When I enter name: "Bob"
     And I enter age: 61
+    And I change name to: "Tom"
     And I click submit age
-    Then I see message: "Hello, Bob, you are an adult"
-
+    Then I see message: "Hello, Tom, you are an adult"
+  @part2
+  Scenario: Enter a number 1
+    Given I am on a task page
+    When I enter number: "35"
+    Then I should see an error: "Number is too small"

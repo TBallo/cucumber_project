@@ -7,8 +7,9 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import  org.junit.Assert.*;
 import java.util.Map;
+import static org.junit.Assert.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -80,5 +81,37 @@ public class SampleSteps {
     @Then("^I should see a heading text$")
     public void iShouldSeeAHeadingText() throws Throwable {
         assertEquals("Heading 1", driver.findElement(By.xpath("//h2[1]")).getText());
+    }
+
+    @And("^I change age to (\\d+)$")
+    public void iChangeAgeTo(int age) throws Throwable {
+        String newAge = String.valueOf(age);
+        driver.findElement(By.id("age")).clear();
+        driver.findElement(By.id("age")).sendKeys(newAge);
+    }
+
+    @And("^I change name to: \"([^\"]*)\"$")
+    public void iChangeNameTo(String name) throws Throwable {
+        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("name")).sendKeys(name);
+    }
+
+    @Given("^I am on a task page$")
+    public void iAmOnATaskPage() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/tasks/task1");
+        assertEquals("https://kristinek.github.io/test-sample/tasks/task1", driver.getCurrentUrl());
+    }
+
+    @When("^I enter number: \"([^\"]*)\"$")
+    public void iEnterNumber(String arg0) throws Throwable {
+        driver.findElement(By.id("numb")).sendKeys("35");
+        driver.findElement(By.cssSelector(".w3-btn")).click();
+
+    }
+
+    @Then("^I should see an error: \"([^\"]*)\"$")
+    public void iShouldSeeAnError(String arg0) throws Throwable {
+        assertEquals("Number is too small", driver.findElement(By.id("ch1_error")).getText());
+        assertTrue(driver.findElement(By.id("ch1_error")).isDisplayed());
     }
 }
