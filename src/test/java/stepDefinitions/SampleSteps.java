@@ -82,4 +82,24 @@ public class SampleSteps {
         assertEquals("Heading 1", driver.findElement(By.cssSelector("#heading_1")).getText());
         // Write code here that turns the phrase above into concrete actions
     }
+
+    @Given("^I am on task page$")
+    public void iAmOnTaskPage() {
+        // Write code here that turns the phrase above into concrete actions
+        driver.get("https://kristinek.github.io/test-sample/tasks/task1");
+        assertEquals("https://kristinek.github.io/test-sample/tasks/task1", driver.getCurrentUrl());
+    }
+
+    @When("^I enter number: (\\d+)$")
+    public void iEnterNumber(int arg0) {
+        // Write code here that turns the phrase above into concrete actions
+        driver.findElement(By.id("numb")).sendKeys(String.valueOf(arg0));
+        driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/button")).click();
+    }
+
+    @Then("^I should see an error: \"([^\"]*)\"$")
+    public void iShouldSeeAnError(String arg0) {
+        assertEquals("Number is too small", driver.findElement(By.id("ch1_error")).getText());
+        // Write code here that turns the phrase above into concrete actions
+    }
 }
