@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class SampleSteps {
     private WebDriver driver;
@@ -62,5 +62,25 @@ public class SampleSteps {
             driver.findElement(By.id(e.getKey())).clear();
             driver.findElement(By.id(e.getKey())).sendKeys(e.getValue());
         }
+    }
+
+    @And("^I should see home page description$")
+    public void iShouldSeeHomePageDescription() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                driver.findElement(By.cssSelector("p")).getText());
+    }
+
+    @When("^I am on page location$")
+    public void iAmOnPageLocation() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        driver.get("https://kristinek.github.io/test-sample/examples/loc");
+        assertEquals("https://kristinek.github.io/test-sample/examples/loc", driver.getCurrentUrl());
+    }
+
+    @Then("^S should see a heading text$")
+    public void sShouldSeeAHeadingText() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        assertEquals("Heading 1", driver.findElement(By.id("heading_1")).getText());
     }
 }
