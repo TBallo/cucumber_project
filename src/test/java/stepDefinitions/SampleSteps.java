@@ -84,4 +84,37 @@ public class SampleSteps {
         assertEquals("Heading 1",
                 driver.findElement(By.xpath("//h2[1]")).getText());
     }
+
+    @And("^I change age to (\\d+)$")
+    public void iChangeAgeTo(int age) throws Throwable {
+        String newAge = String.valueOf(age);
+        driver.findElement(By.id("age")).clear();
+        driver.findElement(By.id("age")).sendKeys(newAge);
+    }
+
+    @And("^I change name to \"([^\"]*)\"$")
+    public void iChangeNameTo(String blabla) throws Throwable {
+        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("name")).sendKeys(blabla);
+    }
+
+    @Given("^I am on task page$")
+    public void iAmOnTaskPage() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/tasks/task1");
+        assertEquals("https://kristinek.github.io/test-sample/tasks/task1",
+                driver.getCurrentUrl());
+    }
+
+    @When("^I enter number: (\\d+)$")
+    public void iEnterNumber(int arg0) throws Throwable {
+        String number = String.valueOf(arg0);
+        driver.findElement(By.id("numb")).clear();
+        driver.findElement(By.id("numb")).sendKeys(number);
+        driver.findElement(By.xpath("//*[@type='button']")).click();
+    }
+
+    @Then("^I should see an error: \"([^\"]*)\"$")
+    public void iShouldSeeAnError(String errorText) throws Throwable {
+        assertEquals(errorText, driver.findElement(By.id("ch1_error")).getText());
+    }
 }
