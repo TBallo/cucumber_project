@@ -1,5 +1,5 @@
 ### Summary
-1. On Desktop open git bash and fo: `git clone https://github.com/KristineK/new_project.git`
+1. On Desktop open git bash and fo: `git clone https://github.com/KristineK/cucumber_project.git`
 2. In IDEA open project `cucumber_project` from "Desktop/cucumber_project"
 3. In IDEA check in project structure, that:
    * Project settings:
