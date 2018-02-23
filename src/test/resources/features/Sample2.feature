@@ -17,3 +17,7 @@ Feature: Introduction to cucumber part 2
     And I click submit age
     Then I see message: "Hello, Bob, you are an adult"
 
+    Scenario: Enter a number 1
+      Given I am on task page
+      When I enter number: 35
+      Then I should see an error: "Number is too small"

@@ -24,6 +24,29 @@ public class SampleSteps {
         driver.get("https://kristinek.github.io/test-sample/examples/loc");
     }
 
+    @Given("^I am on task page$")
+    public void Iamontaskpage() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/tasks/task1");
+    }
+
+    @When("^I enter number: (\\d+)$")
+    public void Ienternumber35(String number) throws Throwable {
+        driver.findElement(By.xpath("//*[@id=\"numb\"]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"numb\"]")).sendKeys(number);
+        driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/button")).click();
+
+    }
+    @Then("^I should see an error: \"Number is too small\"$")
+    public void IshouldseeanerrorNumberistoosmall() throws Throwable {
+        assertEquals("Number is too small",
+                driver.findElement(By.xpath("//*[@id=\"ch1_error\"]")).getText());}
+
+
+
+
+
+
+
     @Then("^I should see a heading text$")
     public void Ishouldseeaheadingtext() throws Throwable {
         assertEquals("Heading 1",
@@ -61,6 +84,11 @@ public class SampleSteps {
     public void iClickSubmitAge() throws Throwable {
         driver.findElement(By.id("submit")).click();
     }
+    @And("^I change age to 6$")
+    public void Ichangeageto6() throws Throwable {
+        driver.findElement(By.id("submit")).click();
+    }
+
 
     @Then("^I see message: \"(.*)\"$")
     public void iSeeMessage(String message) throws Throwable {
