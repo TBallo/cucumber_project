@@ -58,9 +58,16 @@ public class SampleSteps {
 
     @When("^I enter values:$")
     public void iEnterValues(Map<String, String> valuesToEnter) throws Throwable {
-        for (Map.Entry<String, String> e : valuesToEnter.entrySet()) {
-            driver.findElement(By.id(e.getKey())).clear();
-            driver.findElement(By.id(e.getKey())).sendKeys(e.getValue());
-        }
+
     }
+
+    @And("^Ishould see home page description$")
+    public void ishouldSeeHomePageDescription() throws Throwable {
+        assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+        driver.findElement((By.id("message"));
+        throw new PendingException();
+    }
+
+
+    
 }
