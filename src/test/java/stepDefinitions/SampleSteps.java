@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SampleSteps {
     private WebDriver driver;
@@ -62,5 +63,22 @@ public class SampleSteps {
             driver.findElement(By.id(e.getKey())).clear();
             driver.findElement(By.id(e.getKey())).sendKeys(e.getValue());
         }
+    }
+
+    @And("^I should see home page description$")
+    public void iShouldSeeHomePageDescription() throws Throwable {
+        assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                driver.findElement(By.cssSelector("p")).getText());
+    }
+
+    @When("^I am on the page locators$")
+    public void iAmOnThePageLocators() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/examples/loc");
+    }
+
+    @Then("^I should see a heading text$")
+    public void iShouldSeeAHeadingText() throws Throwable {
+        assertTrue(driver.findElement(By.id("heading_1")).isDisplayed());
+        assertEquals("Heading 1",driver.findElement(By.id("heading_1")).getText());
     }
 }
