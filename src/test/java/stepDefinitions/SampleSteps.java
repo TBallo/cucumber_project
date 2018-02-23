@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import com.sun.xml.internal.ws.server.ServerRtException;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -78,5 +79,24 @@ public class SampleSteps {
     @Then("^I should see a heading text$")
     public void iShouldSeeAHeadingText() throws Throwable {
         assertEquals("Heading 1", driver.findElement(By.id("heading_1")).getText());
+    }
+
+
+    @Given("^I am on task page$")
+    public void iAmOnTaskPage() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/tasks/task1");
+    }
+
+    @When("^I enter number: (\\d+)$")
+    public void iEnterNumber(int arg) throws Throwable {
+        String number = String.valueOf(arg);
+        driver.findElement(By.id("numb")).clear();
+        driver.findElement(By.id("numb")).sendKeys(number);
+        driver.findElement(By.className("w3-btn")).click();
+    }
+
+    @Then("^I should see an error: \"([^\"]*)\"$")
+    public void iShouldSeeAnError(String errorText) throws Throwable {
+        assertEquals(errorText, driver.findElement(By.id("ch1_error")).getText());
     }
 }
