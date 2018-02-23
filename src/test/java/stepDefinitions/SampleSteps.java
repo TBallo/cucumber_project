@@ -63,4 +63,24 @@ public class SampleSteps {
             driver.findElement(By.id(e.getKey())).sendKeys(e.getValue());
         }
     }
+
+    @And("^I should see home page definition$")
+    public void iShouldSeeHomePageDefinition() throws Throwable {
+        assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", driver.findElement(By.cssSelector("p")).getText());
+        throw new PendingException();
+    }
+
+    @When("^I am on page locator$") 
+    public void iAmOnPageLocator() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/examples/loc");
+        assertEquals("https://kristinek.github.io/test-sample/examples/loc",
+                driver.getCurrentUrl());
+        throw new PendingException();
+    }
+
+    @And("^I should see a heading text$")
+    public void iShouldSeeAHeadingText() throws Throwable {
+        assertEquals("Heading 1", driver.findElement(By.id("heading_1")).getText());
+        throw new PendingException();
+    }
 }
