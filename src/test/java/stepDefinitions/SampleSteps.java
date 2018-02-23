@@ -76,7 +76,7 @@ public class SampleSteps {
 
     @Then("^I should see heading text$")
     public void iShouldSeeHeadingText() throws Throwable {
-        assertEquals("Heasding_1",
+        assertEquals("Heading 1",
                 driver.findElement(By.xpath("//h2[1]")).getText());
     }
 }
