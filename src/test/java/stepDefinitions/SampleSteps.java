@@ -63,4 +63,25 @@ public class SampleSteps {
             driver.findElement(By.id(e.getKey())).sendKeys(e.getValue());
         }
     }
+
+    @Then("^I am on|open age page$")
+    public void iAmOnOpenAgePage() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^I am on|open age page$")
+    public void iAmOnOpenAgePage() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^I enter$")
+    public void iEnter() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
 }
+
+
+
