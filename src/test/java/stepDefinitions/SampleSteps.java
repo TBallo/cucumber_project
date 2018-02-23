@@ -51,8 +51,21 @@ public class SampleSteps {
         driver.findElement(By.id("name")).sendKeys(name);
     }
 
+    @And("^I change name to \"([^\"]*)\"$")
+    public void iChangeNameTo(String name) throws Throwable {
+        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("name")).sendKeys(name);
+    }
+
     @And("^I enter age: (\\d+)$")
     public void iEnterAge(int age) throws Throwable {
+        driver.findElement(By.id("age")).clear();
+        driver.findElement(By.id("age")).sendKeys(String.valueOf(age));
+    }
+
+    @And("^I change age to (\\d+)$")
+    public void iChangeAgeTo(int age) throws Throwable {
+        String newAge = String.valueOf(age);
         driver.findElement(By.id("age")).sendKeys(String.valueOf(age));
     }
 
@@ -78,7 +91,30 @@ public class SampleSteps {
             driver.findElement(By.id(e.getKey())).sendKeys(e.getValue());
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    @Given("^I am on task page$")
+    public void iAmOnTaskPage() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/tasks/task1");
+    }
+
+    @When("^I enter number (\\d+)$")
+    public void iEnterNumber(int num) throws Throwable {
+        String numb = String.valueOf(num);
+        driver.findElement(By.id("numb")).clear();
+        driver.findElement(By.id("numb")).sendKeys(numb);
+    }
+
+    @And("^I click submit number$")
+    public void iClickSubmitNumber() throws Throwable {
+        driver.findElement(By.cssSelector(".w3-btn")).click();
+    }
+
+    @Then("^I should see an error: \"([^\"]*)\"$")
+    public void iShouldSeeAnError(String arg0) throws Throwable {
+        driver.findElement(By.id("ch1_error")).isDisplayed();
+        assertEquals("Number is too small",driver.findElement(By.id("ch1_error")).getText());
+    }
 
 
 }
