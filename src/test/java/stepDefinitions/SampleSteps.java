@@ -5,11 +5,13 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class SampleSteps {
@@ -62,5 +64,20 @@ public class SampleSteps {
             driver.findElement(By.id(e.getKey())).clear();
             driver.findElement(By.id(e.getKey())).sendKeys(e.getValue());
         }
+    }
+
+    @And("^I should see home page discription$")
+    public void iShouldSeeHomePageDiscription() throws Throwable {
+        Assert.assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", driver.findElement(By.cssSelector("p")).getText());
+    }
+
+    @When("^I am on page locator$")
+    public void iAmOnPageLocator() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/examples/loc");
+    }
+
+    @Then("^I should see a heading text$")
+    public void iShouldSeeAHeadingText() throws Throwable {
+        Assert.assertTrue(driver.findElement(By.id("heading_1")).isDisplayed());
     }
 }
