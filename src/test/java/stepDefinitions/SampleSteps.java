@@ -19,7 +19,18 @@ public class SampleSteps {
         this.driver = Hooks.driver;
     }
 
-    @Given("^I am on the home page$")
+    @When("^I am on page Locators$")
+    public void IamonpageLocators() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/examples/loc");
+    }
+
+    @Then("^I should see a heading text$")
+    public void Ishouldseeaheadingtext() throws Throwable {
+        assertEquals("Heading 1",
+                driver.findElement(By.xpath("//*[@id=\"heading_1\"]")).getText());
+    }
+
+        @Given("^I am on the home page$")
     public void iAmOnTheHomePage() throws Throwable {
         driver.get("https://kristinek.github.io/test-sample");
     }

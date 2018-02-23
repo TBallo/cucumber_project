@@ -6,3 +6,7 @@ Feature: Introduction to cucumber part 1
   Scenario: Simple scenario
     When I am on the home page
     Then I should see home page header
+
+Scenario: Simple Scenario 2
+  When I am on page Locators
+  Then I should see a heading text
