@@ -9,8 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class SampleSteps {
     private WebDriver driver;
@@ -30,6 +29,22 @@ public class SampleSteps {
                 driver.findElement(By.cssSelector("h1")).getText());
     }
 
+    @And("^I should see home page description$")
+    public void iShouldSeeHomePageDescription() throws Throwable {
+        assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                driver.findElement(By.cssSelector("p")).getText());
+    }
+    //----------------------------------------------------------------------------------------------
+    @When("^I am on page locators$")
+    public void iAmOnPageLocators() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/examples/loc");
+    }
+    //----------------------------------------------------------------------------------------------
+    @Then("^I should see a heading text$")
+    public void iShouldSeeAHeadingText() throws Throwable {
+        assertEquals("Heading 1", driver.findElement(By.cssSelector("#heading_1")).getText());
+    }
+    //----------------------------------------------------------------------------------------------
     @When("^I enter name: \"([^\"]*)\"$")
     public void iEnterName(String name) throws Throwable {
         driver.findElement(By.id("name")).clear();
@@ -63,4 +78,7 @@ public class SampleSteps {
             driver.findElement(By.id(e.getKey())).sendKeys(e.getValue());
         }
     }
+
+
+
 }
