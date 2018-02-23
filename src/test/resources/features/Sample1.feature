@@ -4,5 +4,10 @@ Feature: Introduction to cucumber part 1
   I want to be able to write and execute a simple scenario
 
   Scenario: Simple scenario
-    When I am on the home page
-    Then I should see home page header
+    And I am on the home page
+    And I should see home page header
+    And I should see home home page description
+
+  Scenario: Simple scenario 2
+    When I am on page locators
+    Then I should see heading text

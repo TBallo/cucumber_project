@@ -63,4 +63,20 @@ public class SampleSteps {
             driver.findElement(By.id(e.getKey())).sendKeys(e.getValue());
         }
     }
+
+    @And("^I should see home home page description$")
+    public void iShouldSeeHomeHomePageDescription() throws Throwable {
+        driver.findElement(By.cssSelector("p")).getText();
+    }
+
+    @When("^I am on page locators$")
+    public void iAmOnPageLocators() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/examples/loc");
+    }
+
+    @Then("^I should see heading text$")
+    public void iShouldSeeHeadingText() throws Throwable {
+        assertEquals("Heasding_1",
+                driver.findElement(By.xpath("//h2[1]")).getText());
+    }
 }
