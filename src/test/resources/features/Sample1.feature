@@ -11,3 +11,5 @@ Feature: Introduction to cucumber part 1
   Scenario: Simple scenario 2
     When I am on page locators
     Then I should see heading text
+
+

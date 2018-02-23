@@ -79,4 +79,40 @@ public class SampleSteps {
         assertEquals("Heading 1",
                 driver.findElement(By.xpath("//h2[1]")).getText());
     }
+
+    @And("^I changed age to: (\\d+)$")
+    public void iChangedAgeTo(int age) throws Throwable {
+        String newAge = String.valueOf(age);
+        driver.findElements(By.id("age")).clear();
+        driver.findElement(By.id("age")).sendKeys();
+        // Write code here that turns the phrase above into concrete actions
+    }
+
+    @And("^I changed name to: Tom$")
+    public void iChangedNameToTom(String name) throws Throwable {
+        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("name")).sendKeys(name);
+    }
+
+
+    @Given("^Iam on task page$")
+    public void iamOnTaskPage() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/tasks/task1");
+    }
+
+
+    @And("^I enter number: (\\d+)$")
+    public void iEnterNumber(int arg) throws Throwable {
+        String number = String.valueOf(arg);
+        driver.findElement(By.id("numb")).clear();
+        driver.findElement(By.id("numb")).sendKeys(number);
+        driver.findElement(By.xpath("//*@type='button")).click();
+    }
+
+    @Then("^I should see an error: \"([^\"]*)\"$")
+    public void iShouldSeeAnError(String error) throws Throwable {
+        assertEquals("Number is too small", driver.findElement(By.id("ch1_error")).getText());
+    }
 }
+
+
