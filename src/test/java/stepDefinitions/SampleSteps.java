@@ -78,4 +78,47 @@ public class SampleSteps {
     public void iShouldSeeHeading(int arg0) throws Throwable {
         assertEquals("Heading 1", driver.findElement(By.id("heading_1")).getText());
     }
+
+    @And("^I change age to (\\d+)$")
+    public void iChangeAgeTo(int age) throws Throwable {
+        String newAge = String.valueOf(age);
+        driver.findElement(By.id("age")).clear();
+        driver.findElement(By.id("age")).sendKeys(newAge);
+    }
+
+    @Given("^I am on a task page$")
+    public void iAmOnATaskPage() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/tasks/task1");
+    }
+
+    @When("^I enter an number (\\d+)$")
+    public void iEnterAnNumber(int numb) throws Throwable {
+        String number = String.valueOf(numb);
+        driver.findElement(By.id("numb")).sendKeys(number);
+        driver.findElement(By.cssSelector("button")).click();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+    @Then("^I should see an error: \"([^\"]*)\"$")
+    public void iShouldSeeAnError(String errorMsg) throws Throwable {
+        errorMsg="Number is too small";
+        assertEquals(errorMsg, driver.findElement(By.xpath("//*[@id=\"ch1_error\"]")).getText());
+    }
 }

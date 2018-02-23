@@ -7,6 +7,7 @@ Feature: Introduction to cucumber part 2
     Given I am on age page
     When I enter name: "Ann"
     And I enter age: 5
+    And I change age to 6
     And I click submit age
     Then I see message: "Hello, Ann, you are a kid"
 
@@ -16,4 +17,9 @@ Feature: Introduction to cucumber part 2
     And I enter age: 61
     And I click submit age
     Then I see message: "Hello, Bob, you are an adult"
+
+  Scenario: Enter a number
+    Given I am on a task page
+    When I enter an number 30
+    Then I should see an error: "Number is too small"
 
