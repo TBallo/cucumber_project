@@ -8,6 +8,8 @@ Feature: Introduction to cucumber part 1
     Then I should see home page header
     And  I should see home page description
 
-  Scenario: Simple scenario
+  Scenario: Simple scenario 2
     When  I am on page locator
-    Then  I should see a headeng text
+    Then  I should see a heading text
+
+  Scenario: Simple scenario 3

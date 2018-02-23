@@ -77,9 +77,49 @@ public class SampleSteps {
       assertEquals("https://kristinek.github.io/test-sample/examples/loc", driver.getCurrentUrl());
     }
 
-    @Then("^I should see a headeng text$")
+    @Then("^I should see a heading text$")
     public void iShouldSeeAHeadengText() throws Throwable {
         assertEquals("Heading 1", driver.findElement(By.id("heading_1")).getText());
         assertTrue(driver.findElement(By.id("heading_1")).isDisplayed());
+    }
+
+    @And("^I change age to (\\d+)$")
+    public void iChangeAgeTo(int age) throws Throwable {
+        String newAge =  String.valueOf(age);
+        driver.findElement(By.id("age")).clear();
+        driver.findElement(By.id("age")).sendKeys(newAge);
+    }
+
+    @And("^I change name to \"([^\"]*)\"$")
+    public void iChangeNameTo(String name) throws Throwable {
+        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("name")).sendKeys(name);
+
+    }
+
+    @Given("^I am on task page$")
+    public void iAmOnTaskPage() throws Throwable {
+        driver.get("https://kristinek.github.io/test-sample/tasks/task1");
+        assertEquals("https://kristinek.github.io/test-sample/tasks/task1", driver.getCurrentUrl());
+
+    }
+
+    @When("^I enter number: (\\d+)$")
+    public void iEnterNumber(int num) throws Throwable {
+        String number = String.valueOf(num);
+        driver.findElement(By.id("numb")).clear();
+        driver.findElement(By.id("numb")).sendKeys(number);
+
+    }
+
+    @And("^I click submit$")
+    public void iClickSubmit() throws Throwable {
+       driver.findElement(By.className("w3-btn")).click();
+    }
+
+    @Then("^I should see an error: \"([^\"]*)\"$")
+    public void iShouldSeeAnError(String errorText) throws Throwable {
+        assertEquals(errorText, driver.findElement(By.id("ch1_error")).getText());
+
     }
 }
